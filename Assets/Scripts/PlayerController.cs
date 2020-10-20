@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
 
     private Camera mainCamera;
 
+    public GunController gun;
+
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody>();
@@ -35,7 +37,15 @@ public class PlayerController : MonoBehaviour
             transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
         }
 
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            gun.isFiring = true;
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            gun.isFiring = false;
+        }
     }
 
     private void FixedUpdate()
