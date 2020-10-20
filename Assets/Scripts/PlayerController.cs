@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        moveInput = new Vector3(Input.GetAxisRaw("Horizontal") * Time.deltaTime, 0f, Input.GetAxisRaw("Vertical") * Time.deltaTime);
+        moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
         moveVelocity = moveInput * moveSpeed;
 
         Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -34,5 +34,12 @@ public class PlayerController : MonoBehaviour
 
             transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
         }
+
+        
+    }
+
+    private void FixedUpdate()
+    {
+        myRigidbody.velocity = moveVelocity;
     }
 }
