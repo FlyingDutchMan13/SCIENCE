@@ -16,33 +16,48 @@ public class EnemyController : MonoBehaviour
     {
         myRigidbody = GetComponent<Rigidbody>();
         attackCounter = 0f;
+        touchingPlayer = false;
     }
 
     
     void Update()
     {
         attackCounter -= Time.deltaTime;
+        if (touchingPlayer)
+        {
+            AttackPlayer();
+        }
     }
 
     void FixedUpdate()
     {
         transform.LookAt(player.gameObject.transform.position);
         myRigidbody.velocity = transform.forward * moveSpeed;
-
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+
         if (collision.gameObject.GetComponent<PlayerController>() != null)
         {
-            if (attackCounter <= 0f)
-            {
-                player.gameObject.GetComponent<HealthManager>().Damage(damageToGive);
-                attackCounter = timeBetweenAttacks;
-
-
-            }
+            touchingPlayer = true;
         }
+    }
 
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<PlayerController>() != null)
+        {
+            touchingPlayer = false;
+        }
+    }
+
+    private void AttackPlayer()
+    {
+        if (attackCounter <= 0f)
+        {
+            player.gameObject.GetComponent<HealthManager>().Damage(damageToGive);
+            attackCounter = timeBetweenAttacks;
+        }
     }
 }

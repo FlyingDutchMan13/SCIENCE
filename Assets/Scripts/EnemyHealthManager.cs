@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthManager : MonoBehaviour
+public class EnemyHealthManager : MonoBehaviour
 {
     public int health;
     private int currentHealth;
@@ -12,26 +12,24 @@ public class HealthManager : MonoBehaviour
 
     }
 
-    
     void Update()
     {
-        if (currentHealth <= 0)
+        if (currentHealth <= 0f)
         {
-            KillPlayer();
-
+            Kill();
         }
-    }
 
+    }
+    
     public void Damage(int damage)
     {
         currentHealth -= damage;
-
     }
 
-    private void KillPlayer()
+    private void Kill()
     {
         Destroy(gameObject);
 
     }
-
 }
+

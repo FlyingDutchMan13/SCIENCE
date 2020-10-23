@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 4299833867609331022}
   - component: {fileID: 7439160953271431003}
   - component: {fileID: 7350733222783582354}
+  - component: {fileID: 1412345248150895994}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,3 +129,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 9
   player: {fileID: 0}
+  damageToGive: 3
+  timeBetweenAttacks: 2
+--- !u!114 &1412345248150895994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7187309852493412037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 196296ea6ecbe344fb399271278cda30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
