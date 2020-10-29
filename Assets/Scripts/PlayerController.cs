@@ -37,6 +37,11 @@ public class PlayerController : MonoBehaviour
             transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
         }
 
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            gun.StartReload();
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             gun.isFiring = true;
